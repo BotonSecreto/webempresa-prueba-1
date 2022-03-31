@@ -1,0 +1,12 @@
+{% extends 'core/base.html' %} <!-- Invoca la plantilla "base.html" -->
+<!-- Bloque particular de esta página -->
+{% load static %} <!-- carga contenido estático-->
+{% block title %}Tienda{% endblock %} <!--Bloque de título para esta página -->
+<!--bloque de imagen de fondo-->
+{% block background %}{% static 'core/img/intro.jpg' %}{% endblock %}
+
+{% block content %}
+<h2>Tienda</h2>
+<p>Esto es la tienda</p>
+{% endblock %}
+

@@ -1,0 +1,12 @@
+{% extends 'core/base.html' %} <!-- Invoca la plantilla "base.html" -->
+<!-- Bloque particular de esta página -->
+{% load static %} <!-- carga contenido estático-->
+{% block title %}Servicios{% endblock %} <!--Bloque de título para esta página -->
+
+<!--bloque de imagen de fondo-->
+{% block background %}{% static 'core/img/bg.jpg' %}{% endblock %}
+{% block content %}
+<h2>Servicios</h2>
+<p>Esto es el espacio de servicios</p>
+{% endblock %}
+

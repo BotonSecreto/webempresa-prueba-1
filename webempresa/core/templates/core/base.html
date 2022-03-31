@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<!-- <html lang="en"> -->
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>{% block title %}{% endblock %} | Web Empresa</title> <!-- Integra bloque al title -->
+
+    {% load static %}
+    <!-- Le pedimos al servidor que cargue los archivos estáticos -->
+
+    <!-- Bootstrap y Javascripts ***** SIEMPRE DENTRO DEL HEAD-->
+    <!-- Versión mínima de Bootstrap CSS-->
+    <link href="{% static 'core/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Versión Completa de Bootstrap CSS-->
+    <!--  <link href="{% static 'core/vendor/bootstrap/css/bootstrap.css' %}" rel="stylesheet"> -->
+
+    <!-- Fuentes -->
+    <link href="{% static 'core/vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+        rel='stylesheet' type='text/css'>
+
+    <!-- Estilos del template  -->
+    <link href="{% static 'core/css/clean-blog.min.css' %}" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'core/img/Avatar_boton_ico.ico' %}"> <!-- Ícono del sitio -->
+</head>
+
+<body>
+    <!-- <h1 class="site-heading text-center text-white d-none d-lg-block">
+        <span class="site-heading-upper text-primary mb-3">Sitio para mi empresa</span>
+        <span class="site-heading-lower">Web Empresa</span>
+    </h1> -->
+    <!-- Navegación -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand text-uppercase text-expanded font-weight-bold" href="{% url 'home' %}">Web
+                Empresa</a> <!-- Título redimensiona con tamaño responsivo -->
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span> <!-- Dibuja barras de menú -->
+                <!-- Menú
+                <i class="fa fa-bars"></i> -->
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item {% if request.path == '/' %}active{% endif %}">
+                        <!--Resalta el menú activo-->
+                        <a class="nav-link text-uppercase text-expanded" href="{% url 'home' %}">Portada</a>
+                        <!-- Tag de url automatizada -->
+                    </li>
+                    <li class="nav-item {% if request.path == '/services/' %}active{% endif %}">
+                        <a class="nav-link text-uppercase text-expanded" href="{% url 'services' %}">Servicios</a>
+                    </li>
+                    <li class="nav-item {% if request.path == '/store/' %}active{% endif %}">
+                        <a class="nav-link text-uppercase text-expanded" href="{% url 'store' %}">Tienda</a>
+                    </li>
+                    <li class="nav-item px-lg-4 {% if request.path|slice:" :6" == '/blog/' %}active{% endif %}">
+                        <a class="nav-link text-uppercase text-expanded" href="{% url 'blog' %}">Blog</a>
+                        <!-- recorte primeros caract del path con filtro slice para que lo reconozca y pinte el menú-->
+                    </li>
+                    <li class="nav-item {% if request.path == '/portfolio/' %}active{% endif %}">
+                        <a class="nav-link text-uppercase text-expanded" href="{% url 'portafolio' %}">Portafolio</a>
+                    </li>
+                    <li class="nav-item {% if request.path == '/about-kk/' %}active{% endif %}">
+                        <a class="nav-link text-uppercase text-expanded" href="{% url 'about' %}">Acerca de</a>
+                    </li>
+                    <li class="nav-item {% if request.path == '/contact/' %}active{% endif %}">
+                        <a class="nav-link text-uppercase text-expanded" href="{% url 'contact' %}">Contacto</a>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <a href="/admin">Administración</a>
+                    </li> -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Cabecera -->
+    <header class="masthead" style="background-image: url('{% block background %}{% endblock %}')">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <div class="site-heading">
+                        {% block headers %}{% endblock %}
+                        <!--
+                        <h1>Web Empresa</h1>
+                        <span class="subheading">Mauricio Solar</span>
+                        -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- "Template Tag" para habilitar el espacio de contenido -->
+    <!-- Contenido -->
+    <div class="container">
+        {% block content %}
+        <!-- Cabecera -->
+        <section class="page-section clearfix">...</section>
+        <!-- Mensaje -->
+        <section class="page-section cta">...</section>
+        {% endblock %}
+    </div>
+
+    {% if request.path != "/" %}
+    <hr>{% endif %}
+    <!--Línea divisoria del footer en todas las páginas menos home-->
+
+    <!-- Pié de página -->
+    <footer class="footer text-faded text-center py-5">
+        <!--coloca footer en una caja-->
+        <div class="container">
+            <p class="m-0">
+                {% if LINK_TW %}
+                <!-- LINK_TW: identificador de enlace a TWITTER -->
+                <a href="{{LINK_TW}}" class="link">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+                {% endif %}
+                {% if LINK_FB %}
+                <!-- LINK_FB: identificador de enlace a FACEBOOK -->
+                <a href="{{LINK_FB}}" class="link">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+                {% endif %}
+                {% if LINK_IG %}
+                <!-- LINK_TW: identificador de enlace a INSTAGRAM -->
+                <a href="{{LINK_IG}}" class="link">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+                {% endif %}
+            </p>
+            <p class="m-0 mbt">
+                {% load pages_extras %}
+                {% get_page_list as page_list %}
+                {% for page in page_list %}
+                <!-- slug permite pasar texto explícito por la url, favoreciendo SEO en la página -->
+                <a href="{% url 'page' page.id page.title|slugify %}" class="link">{{page.title}}</a> {% if not forloop.last %}·{% endif %}
+                {% endfor %}
+            </p>
+            <p class="copyright text-muted">Copyright &copy; 2022 · Botón Secreto </p>
+            <p class="m-0 mbt1">&copy; Web de Prueba 2022</p>
+        </div>
+    </footer>
+    <!-- Bootstrap **** Los archivos JavaScript siempre en la parte inferior dentro del body -->
+    <script src="{% static 'core/vendor/jquery/jquery.min.js' %}"></script>
+    <!-- Versión completa de bootstrap js-->
+    <!-- <script src="{% static 'core/vendor/bootstrap/js/bootstrap.js' %}"></script> -->
+    <!-- Versión mínima de bootstrap js-->
+    <script src="{% static 'core/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+</body>
+
+</html>

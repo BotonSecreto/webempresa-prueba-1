@@ -1,0 +1,31 @@
+{% extends 'core/base.html' %}
+<!-- Invoca la plantilla "base.html" -->
+<!-- Bloque particular de esta página -->
+{% load static %}
+<!-- carga contenido estático-->
+{% block title %}{{page.title}}{% endblock %}
+<!--Bloque de título para esta página -->
+<!--bloque de imagen de fondo-->
+
+{% block content %}
+<section class="page-section about-heading">
+    <div class="container">
+        <div class="about-heading-content mbtm">
+            <div class="row">
+                <div class="col-xl-9 col-lg-10 mx-auto">
+                    <div class="bg-faded rounded p-5 forced">
+                        <h2 class="section-heading mb-4">
+                            <span class="section-heading-lower">
+                                {{page.title}}</span>
+                        </h2>
+                        <div class="section-content">
+                            <!-- {{page.content|linebreaks}} -->
+                            {{page.content|safe}} <!-- contenido se editará con CKeditor -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
