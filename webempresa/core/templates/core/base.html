@@ -109,7 +109,6 @@
             <p class="m-0">
                 {% if LINK_TW %}
                 <!-- LINK_TW: identificador de enlace a TWITTER -->
-                <!-- <a href="{{LINK_TW}}" class="link"> -->
                 <a href="{{LINK_TW}}">
                     <span class="fa-stack fa-lg">
                         <i class="fa fa-circle fa-stack-2x"></i>
@@ -119,7 +118,7 @@
                 {% endif %}
                 {% if LINK_FB %}
                 <!-- LINK_FB: identificador de enlace a FACEBOOK -->
-                <a href="{{LINK_FB}}" class="link">
+                <a href="{{LINK_FB}}">
                     <span class="fa-stack fa-lg">
                         <i class="fa fa-circle fa-stack-2x"></i>
                         <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
@@ -128,7 +127,7 @@
                 {% endif %}
                 {% if LINK_IG %}
                 <!-- LINK_TW: identificador de enlace a INSTAGRAM -->
-                <a href="{{LINK_IG}}" class="link">
+                <a href="{{LINK_IG}}">
                     <span class="fa-stack fa-lg">
                         <i class="fa fa-circle fa-stack-2x"></i>
                         <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
@@ -141,7 +140,7 @@
                 {% get_page_list as page_list %}
                 {% for page in page_list %}
                 <!-- slug permite pasar texto explícito por la url, favoreciendo SEO en la página -->
-                <a href="{% url 'page' page.id page.title|slugify %}" class="link">{{page.title}}</a> {% if not forloop.last %}·{% endif %}
+                <a href="{% url 'page' page.id page.title|slugify %}">{{page.title}}</a> {% if not forloop.last %}·{% endif %}
                 {% endfor %}
             </p>
             <p class="copyright text-muted">Copyright &copy; 2022 · Botón Secreto </p>
